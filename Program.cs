@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 
 
-namespace ProductStoreClient
+namespace wallpaperDl
 {
     
         class Program
