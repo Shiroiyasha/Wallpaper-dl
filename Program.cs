@@ -43,7 +43,7 @@ namespace ProductStoreClient
                 query["apikey"] = "5TWcue0vWsGOfq4r6MYL1qofSALguBR4";
                 uriBuilder.Query = query.ToString();
                 uri = uriBuilder.ToString();
-                // HTTP GET															//q=tag						    		Atleast=Resolution   //Add API key at the end for more option
+               
                 HttpResponseMessage response = await client.GetAsync(uri);
                
                
@@ -52,7 +52,7 @@ namespace ProductStoreClient
                     var result = await response.Content.ReadAsStringAsync();
 					JObject url = JObject.Parse(result);
 						for (int i = 0; i<=26; i++) 
-						{					
+							{					
 						string urlPath = (string)url["data"][i]["path"];
 						Uri uriAddress1 = new Uri(urlPath);
 						var format = uriAddress1.Segments[3];
@@ -60,9 +60,9 @@ namespace ProductStoreClient
 						WebClient wb = new WebClient(); 
 						wb.DownloadFile(urlPath, format);
 						
+							}
 						}
-					}
-    }
+   			 }
   	  }	
-    }
+   }
 }
