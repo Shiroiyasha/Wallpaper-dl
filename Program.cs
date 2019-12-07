@@ -38,7 +38,7 @@ namespace ProductStoreClient
                 uriBuilder.Port = -1;
                 var query = HttpUtility.ParseQueryString(uriBuilder.Query);
                 query["q"] = "cyberpunk";
-              //  query["q"] = "  +  " //for to words
+              //  query["q"] = "  +  "
                 query["atleast"] ="1920x1080";
                 query["apikey"] = "5TWcue0vWsGOfq4r6MYL1qofSALguBR4";
                 uriBuilder.Query = query.ToString();
