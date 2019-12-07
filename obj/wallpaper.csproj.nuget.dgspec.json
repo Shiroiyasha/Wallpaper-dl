@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/Rafael/Desktop/C/wallpaper/wallpaper.csproj": {}
+  },
+  "projects": {
+    "/home/Rafael/Desktop/C/wallpaper/wallpaper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/Rafael/Desktop/C/wallpaper/wallpaper.csproj",
+        "projectName": "wallpaper",
+        "projectPath": "/home/Rafael/Desktop/C/wallpaper/wallpaper.csproj",
+        "packagesPath": "/home/Rafael/.nuget/packages/",
+        "outputPath": "/home/Rafael/Desktop/C/wallpaper/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/Rafael/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.Extensions.Primitives": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "newtonsoft.json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
