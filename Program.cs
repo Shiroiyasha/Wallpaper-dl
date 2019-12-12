@@ -19,7 +19,7 @@ namespace wallpaperDl
         static void Main()
         {
 
-            RunAsync().Wait(-1);
+            RunAsync().Wait();
             
         }
         		
@@ -30,12 +30,12 @@ namespace wallpaperDl
 
 
             	
-                string uri = "https://wallhaven.cc/api/v1/search?q=&purity=111&categories=010&page=5&atleast=&sorting=favorites&order=desc&apikey=";
+                string uri = "https://wallhaven.cc/api/v1/search?q=&purity=111&categories=111&page=5&atleast=&sorting=favorites&order=desc&apikey=";
                 var uriBuilder = new UriBuilder(uri);
                 uriBuilder.Port = -1;
                 var query = HttpUtility.ParseQueryString(uriBuilder.Query);
                 query["q"] = "cyberpunk";
-              //  query["q"] = "  +  "
+                //  query["q"] = "  +  "
                 query["atleast"] ="1920x1080";
                 query["apikey"] = "5TWcue0vWsGOfq4r6MYL1qofSALguBR4";
                 uriBuilder.Query = query.ToString();
@@ -46,17 +46,17 @@ namespace wallpaperDl
                
                 if (response.IsSuccessStatusCode)
                			 {
-               			 	Console.WriteLine(uri);
-                    var result = await response.Content.ReadAsStringAsync();
+               			 	            Console.WriteLine(uri);
+                                        var result = await response.Content.ReadAsStringAsync();
 										JObject url = JObject.Parse(result);
-										for (int i = 0; i<=50; i++) 
+										for (int i = 0; i<=23; i++) 
 										{					
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
 										var format = uriAddress1.Segments[3];
-										Console.WriteLine("{0} <= ##URL##, {1} <= ##Title## , {2} ## Number", urlPath,format,i);
-										// WebClient wb = new WebClient(); 
-										// wb.DownloadFile(urlPath, format);
+										Console.WriteLine("{0} <= ##URL##, {1} <= ##Title##", urlPath,format);
+										 WebClient wb = new WebClient(); 
+										 wb.DownloadFile(urlPath, format);
 						
 							}
 						}
