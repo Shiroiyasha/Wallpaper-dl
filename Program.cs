@@ -89,8 +89,8 @@ namespace wallpaperDl
 
                     var result = await response.Content.ReadAsStringAsync();
 										JObject url = JObject.Parse(result);
-                    int count = url.Count;
-										for (int i = 0; i<=count; i++)
+
+										for (int i = 0; i<=23; i++)
 										{
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
