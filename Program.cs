@@ -1,9 +1,10 @@
 using System;
+using static System.Console;
 using System.Net;
-using System.Linq;
+
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
+
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
@@ -33,45 +34,45 @@ namespace wallpaperDl
                                       var uriBuilder = new UriBuilder(uri);
                                       uriBuilder.Port = -1;
                                       var query = HttpUtility.ParseQueryString(uriBuilder.Query);
-                                      Console.WriteLine("tagname - search fuzzily for a tag/-tagname - exclude a tag/+tag1 +tag2 - must have tag1 and +tag1 -tag2 - must have tag1 and NOT  \n @username - user   id:123 - Exact tag search (can not be combined  type:{png/jpg} - Search for file type (jpg = jpeg  like:wallpaper ID -\n Find wallpapers with similar tags\n");
-                                      Console.WriteLine("query:\n\n");
-                                      string q = Console.ReadLine();
+                                      WriteLine("tagname - search fuzzily for a tag/-tagname - exclude a tag/+tag1 +tag2 - must have tag1 and +tag1 -tag2 - must have tag1 and NOT  \n @username - user   id:123 - Exact tag search (can not be combined  type:{png/jpg} - Search for file type (jpg = jpeg  like:wallpaper ID -\n Find wallpapers with similar tags\n");
+                                      WriteLine("query:\n\n");
+                                      string q = ReadLine();
                                       query["q"] = q;
                                       //  query["q"] = "  +  "
-                                          Console.WriteLine("1920x1080,1920x1200\n\n");
-                                      Console.WriteLine("Size:\n\n");
-                                      string size = Console.ReadLine();
+                                          WriteLine("1920x1080,1920x1200\n\n");
+                                      WriteLine("Size:\n\n");
+                                      string size = ReadLine();
                                       query["atleast"] =size;
                                       query["apikey"] = "5TWcue0vWsGOfq4r6MYL1qofSALguBR4";
 
-                                            Console.WriteLine("100*/110/111/etc (sfw/sketchy/nsfw)\n\n");
-                                      Console.WriteLine("Purity\n\n");
-                                      string purity = Console.ReadLine();
+                                            WriteLine("100*/110/111/etc (sfw/sketchy/nsfw)\n\n");
+                                      WriteLine("Purity\n\n");
+                                      string purity = ReadLine();
                                       query["purity"] =purity;
 
 
-                                          Console.WriteLine("100/101/111*/etc (general/anime/people)\n\n");
-                                      Console.WriteLine("categories:\n\n");
-                                      string categories = Console.ReadLine();
+                                          WriteLine("100/101/111*/etc (general/anime/people)\n\n");
+                                    WriteLine("categories:\n\n");
+                                      string categories = ReadLine();
                                       query["categories"] = categories;
 
 
-                                          Console.WriteLine("int");
-                                      Console.WriteLine("Page:\n\n");
-                                      string pages = Console.ReadLine();
+                                          WriteLine("int");
+                                      WriteLine("Page:\n\n");
+                                      string pages = ReadLine();
                                       query["page"] =pages;
 
 
-                                          Console.WriteLine("date_added*, relevance, random, views, favorites, toplist\n\n");
-                                      Console.WriteLine("Sorting:\n\n");
-                                      string sorting = Console.ReadLine();
+                                          WriteLine("date_added*, relevance, random, views, favorites, toplist\n\n");
+                                      WriteLine("Sorting:\n\n");
+                                      string sorting = ReadLine();
                                       query["sorting"] = sorting;
 
 
 
-                                          Console.WriteLine("desc*, asc\n\n");
-                                      Console.WriteLine("order:\n\n");
-                                      string order = Console.ReadLine();
+                                        WriteLine("desc*, asc\n\n");
+                                      WriteLine("order:\n\n");
+                                      string order = ReadLine();
                                       query["order"] = order;
 
 
@@ -82,7 +83,7 @@ namespace wallpaperDl
 
 
                 HttpResponseMessage response = await client.GetAsync(uri);
-                    Console.WriteLine(uri);
+                    WriteLine(uri);
 
                 if (response.IsSuccessStatusCode)
                			 {
@@ -96,14 +97,14 @@ namespace wallpaperDl
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
 										var format = uriAddress1.Segments[3];
-										Console.WriteLine("{0}  ##URL##", urlPath);
+										WriteLine("{0}  ##URL##", urlPath);
 										  WebClient wb = new WebClient();
 										  wb.DownloadFile(urlPath, format);
 
 							}
 						}catch(ArgumentOutOfRangeException)
             {
-              Console.WriteLine("Only 25 result at the time,Try a different Page ");
+              WriteLine("Only 25 result at the time,Try a different Page ");
               RunAsync().Wait();
             }
 
