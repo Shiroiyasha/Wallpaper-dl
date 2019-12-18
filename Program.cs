@@ -82,29 +82,33 @@ namespace wallpaperDl
 
 
                 HttpResponseMessage response = await client.GetAsync(uri);
-
+                    Console.WriteLine(uri);
 
                 if (response.IsSuccessStatusCode)
                			 {
+                       try{
 
                     var result = await response.Content.ReadAsStringAsync();
 										JObject url = JObject.Parse(result);
 
-										for (int i = 0; i<=23; i++)
+										for (int i = 0; i<45; i++)
 										{
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
 										var format = uriAddress1.Segments[3];
 										Console.WriteLine("{0}  ##URL##", urlPath);
-										 WebClient wb = new WebClient();
-										 wb.DownloadFile(urlPath, format);
+										  WebClient wb = new WebClient();
+										  wb.DownloadFile(urlPath, format);
 
 							}
-						}
-            else
+						}catch(ArgumentOutOfRangeException)
             {
-              Console.WriteLine("Things went wrong, Try Again\n");
+              Console.WriteLine("Only 25 result at the time,Try a different Page ");
+              RunAsync().Wait();
             }
+
+          }
+
    			 }
   	  }
    }
