@@ -100,8 +100,10 @@ namespace wallpaperDl
 										  wb.DownloadFile(urlPath, format);
 
 							}
-						}catch(ArgumentOutOfRangeException)
-            {
+						}
+			catch(ArgumentOutOfRangeException)
+           	{
+				
               WriteLine("Only 25 result at the time,Try a different Page ");
               RunAsync().Wait();
           	  }
