@@ -1,10 +1,8 @@
 using System;
 using static System.Console;
 using System.Net;
-
 using System.Collections.Generic;
 using System.Net.Http;
-
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
@@ -52,7 +50,7 @@ namespace wallpaperDl
 
 
                                           WriteLine("100/101/111*/etc (general/anime/people)\n\n");
-                                    WriteLine("categories:\n\n");
+                                   	 WriteLine("categories:\n\n");
                                       string categories = ReadLine();
                                       query["categories"] = categories;
 
@@ -92,7 +90,7 @@ namespace wallpaperDl
                     var result = await response.Content.ReadAsStringAsync();
 										JObject url = JObject.Parse(result);
 
-										for (int i = 0; i<45; i++)
+										for (int i = 0; i<24; i++)
 										{
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
@@ -106,11 +104,11 @@ namespace wallpaperDl
             {
               WriteLine("Only 25 result at the time,Try a different Page ");
               RunAsync().Wait();
-            }
+          	  }
 
-          }
+         	 }
 
-   			 }
-  	  }
+   		}
+  	}
    }
 }
