@@ -90,7 +90,7 @@ namespace wallpaperDl
                     var result = await response.Content.ReadAsStringAsync();
 										JObject url = JObject.Parse(result);
 
-										for (int i = 0; i<24; i++)
+										for (int i = 0; i<25; i++)
 										{
 										string urlPath = (string)url["data"][i]["path"];
 										Uri uriAddress1 = new Uri(urlPath);
@@ -104,7 +104,7 @@ namespace wallpaperDl
 			catch(ArgumentOutOfRangeException)
            	{
 				
-              WriteLine("Only 25 result at the time,Try a different Page ");
+              WriteLine("Looooop ");
               RunAsync().Wait();
           	  }
 
