@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 
 
@@ -87,19 +86,22 @@ namespace wallpaperDl
                			 {
                        try{
 
-                    var result = await response.Content.ReadAsStringAsync();
-										JObject url = JObject.Parse(result);
+                        var result = await response.Content.ReadAsStringAsync();
+                        JsonDocument url = JsonDocument.Parse(result);
+                        JsonElement data = url.RootElement.GetProperty("data");
 
-										for (int i = 0; i<25; i++)
-										{
-										string urlPath = (string)url["data"][i]["path"];
-										Uri uriAddress1 = new Uri(urlPath);
-										var format = uriAddress1.Segments[3];
-										WriteLine("{0}  ##URL##", urlPath);
-										  WebClient wb = new WebClient();
-										  wb.DownloadFile(urlPath, format);
-
-							}
+                        foreach (JsonElement i in data.EnumerateArray())
+						{
+                            if (i.TryGetProperty("path", out JsonElement el))
+                            {
+                                string urlPath = el.GetString();
+                                Uri uriAddress1 = new Uri(urlPath);
+                                var format = uriAddress1.Segments[3];
+                                WriteLine("{0}  ##URL##", urlPath);
+                                WebClient wb = new WebClient();
+                                wb.DownloadFile(urlPath, format);
+                            }
+                        }
 						}
 			catch(ArgumentOutOfRangeException)
            	{
